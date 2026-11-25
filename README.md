@@ -2,6 +2,8 @@
 
 A DBMS mini project: members reserve, cancel and return library books through a simple web page. The database does the real work with a **stored procedure**, **CASE (switch-case) logic** and **triggers**.
 
+![App screenshot](screenshot.png)
+
 No PHP. Built with Node.js, Express, MySQL and plain HTML/CSS/JavaScript. Works in VS Code.
 
 ## Features
