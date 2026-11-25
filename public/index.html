@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Library Reservation Desk</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <h1>Library Reservation Desk</h1>
+    <p>Reserve, cancel and return books. Every change is logged by database triggers.</p>
+  </header>
+
+  <p id="message" class="message" role="status" aria-live="polite" hidden></p>
+
+  <main class="layout">
+    <section class="desk" aria-label="Forms">
+      <form id="circulationForm" class="panel">
+        <h2>Circulation</h2>
+        <label for="actionSelect">Action</label>
+        <select id="actionSelect" name="action">
+          <option value="RESERVE">Reserve a book</option>
+          <option value="CANCEL">Cancel a reservation</option>
+          <option value="RETURN">Return a book</option>
+        </select>
+
+        <label for="userSelect">Member</label>
+        <select id="userSelect" name="user_id" required></select>
+
+        <label for="bookSelect">Book</label>
+        <select id="bookSelect" name="book_id" required></select>
+
+        <button type="submit" class="primary">Submit</button>
+      </form>
+
+      <form id="userForm" class="panel">
+        <h2>Add member</h2>
+        <label for="userName">Name</label>
+        <input id="userName" name="name" type="text" maxlength="100" required />
+        <label for="userEmail">Email</label>
+        <input id="userEmail" name="email" type="email" maxlength="100" required />
+        <button type="submit">Add member</button>
+      </form>
+
+      <form id="bookForm" class="panel">
+        <h2>Add book</h2>
+        <label for="bookTitle">Title</label>
+        <input id="bookTitle" name="title" type="text" maxlength="100" required />
+        <label for="bookAuthor">Author</label>
+        <input id="bookAuthor" name="author" type="text" maxlength="100" />
+        <button type="submit">Add book</button>
+      </form>
+    </section>
+
+    <section class="records" aria-label="Records">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" aria-controls="tab-books" data-tab="books">Books</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-reservations" data-tab="reservations">Reservations</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-history" data-tab="history">Activity log</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-users" data-tab="users">Members</button>
+      </div>
+
+      <div id="tab-books" class="tabpanel" role="tabpanel">
+        <div class="scroll"><table>
+          <thead><tr><th>ID</th><th>Title</th><th>Author</th><th>Status</th></tr></thead>
+          <tbody id="booksBody"></tbody>
+        </table></div>
+      </div>
+
+      <div id="tab-reservations" class="tabpanel" role="tabpanel" hidden>
+        <div class="scroll"><table>
+          <thead><tr><th>ID</th><th>Member</th><th>Book</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody id="reservationsBody"></tbody>
+        </table></div>
+      </div>
+
+      <div id="tab-history" class="tabpanel" role="tabpanel" hidden>
+        <p class="hint">These rows are written by the triggers, not by the app.</p>
+        <div class="scroll"><table>
+          <thead><tr><th>Log ID</th><th>Reservation</th><th>Member</th><th>Book</th><th>Event</th><th>Time</th></tr></thead>
+          <tbody id="historyBody"></tbody>
+        </table></div>
+      </div>
+
+      <div id="tab-users" class="tabpanel" role="tabpanel" hidden>
+        <div class="scroll"><table>
+          <thead><tr><th>ID</th><th>Name</th><th>Email</th></tr></thead>
+          <tbody id="usersBody"></tbody>
+        </table></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

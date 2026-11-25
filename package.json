@@ -1,0 +1,17 @@
+{
+  "name": "library-reservation-system",
+  "version": "1.0.0",
+  "description": "DBMS mini project: library book reservation with MySQL stored procedure, triggers, CASE (switch-case) logic and a simple Node.js + HTML front-end.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["dbms", "mysql", "stored-procedure", "trigger", "nodejs", "express"],
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.9.7"
+  }
+}
